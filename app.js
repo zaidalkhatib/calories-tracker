@@ -223,6 +223,7 @@ const App = ((itemCtrl, UICtrl) => {
         UICtrl.addItemToFormOnUpdate();
         //show edit, delete and back buttons when the edit icon clicked
         UICtrl.showButtonsOnEdit();
+        e.preventDefault();
       }
     });
 
@@ -235,19 +236,21 @@ const App = ((itemCtrl, UICtrl) => {
     });
 
     // update element on clicking on the update meal button
-    document.querySelector(".update-btn").addEventListener("click", () => {
+    document.querySelector(".update-btn").addEventListener("click", (e) => {
       const input = UICtrl.getFormInput();
       const updatedItem = itemCtrl.updateItem(input);
       UICtrl.updateUI(updatedItem);
       const updatedCalories = itemCtrl.updatedCalories();
       UICtrl.UIupdateCaories(updatedCalories);
       UICtrl.clearEditState();
+      e.preventDefault();
     });
 
     // clear All
     document.querySelector(".clear-btn").addEventListener("click", () => {
       itemCtrl.deleteItems();
       UICtrl.delteItemsFromUI();
+      e.preventDefault();
     });
 
     //back btn, go back to the inital state
@@ -260,6 +263,7 @@ const App = ((itemCtrl, UICtrl) => {
       const updatedCalories = itemCtrl.updatedCalories();
       UICtrl.UIupdateCaories(updatedCalories);
       UICtrl.clearEditState();
+      e.preventDefault();
     });
   };
 
